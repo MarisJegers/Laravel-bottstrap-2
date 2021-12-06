@@ -67,7 +67,7 @@ Route::post('/itinerary/update/{id}', [TravelitineraryController::class, 'update
 Route::get('/itinerary/delete/{id}', [TravelitineraryController::class, 'deleteitinerary']);
 Route::get('/itinerary/show/{id}', [TravelitineraryController::class, 'show'])->name('itineraries.show');
 Route::get('/itineraries/search/', [TravelitineraryController::class, 'search'])->name('itineraries.search');
-
+Route::get('/itinerary/showitin/{id}', [TravelitineraryController::class, 'showitin'])->name('itineraries.showitin');
 
 //routi braucieniem
 Route::get('journeys/index', [JourneyController::class, 'alljourneys'])->name('journeys.index');

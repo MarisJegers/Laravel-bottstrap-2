@@ -77,7 +77,7 @@
                     
                     <a href="{{url('/itinerary/edit/'.$value->id)}}" class="btn btn-secondary btn-sm">Labot</a>
                     <a href="{{url('/itinerary/delete/'.$value->id)}}" onclick="return confirm('Vai tiešām dzēst?')" class="btn btn-secondary btn-sm">Dzēst</a>
-                    
+                    <a href="{{url('/itinerary/showitin/'.$value->id)}}" class="btn btn-secondary btn-sm">Skatīt</a>
                     </td> 
                 </tr> 
                       @endforeach

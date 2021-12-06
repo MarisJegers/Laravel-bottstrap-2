@@ -176,6 +176,23 @@ class TravelitineraryController extends Controller
                     ->with('journey', $journey);
     }
 
+    //papildinājums admina celazimju skatam
+    public function showitin($id)
+    {
+        $data = Travelitinerary::find($id);
+        $costcenter = Costcenter::all();
+        $journey = Journey::where('ti_nr_id', $id)
+               ->orderBy('created_at', 'desc')
+               ->take(10)
+               ->get();
+        
+        //dd($data);
+        //dd($journey);
+        return view('itineraries.showitin',compact('data'))
+                    ->with('costcenter', $costcenter)
+                    ->with('journey', $journey);
+    }
+
     public function search(Request $request){
         // Lietotāja ierakstītā frāze tiek iegūta no formas input lauka,
         // kurš tiek saglabāts $search mainīgajā
