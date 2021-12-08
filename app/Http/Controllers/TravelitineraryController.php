@@ -6,12 +6,14 @@ use Carbon\Carbon;
 use App\Models\Car;
 use App\Models\User;
 use App\Models\Journey;
+//use Barryvdh\DomPDF\PDF;
 use App\Models\Costcenter;
 use Illuminate\Http\Request;
 use App\Models\Travelitinerary;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Query\Builder;
+use PDF;
 
 class TravelitineraryController extends Controller
 {
@@ -192,6 +194,27 @@ class TravelitineraryController extends Controller
                     ->with('costcenter', $costcenter)
                     ->with('journey', $journey);
     }
+
+    // Generate PDF
+    //public function createPDF() {
+         // retreive all records from db
+         //$data = Travelitinerary::find($id);
+         //$data = Travelitinerary::all();
+         //$costcenter = Costcenter::all();
+         //$journey = Journey::where('ti_nr_id', $id)
+                //->orderBy('created_at', 'desc')
+               // ->take(10)
+               // ->get();
+  
+        // share data to view
+         //view()->share('data',$data);
+         //$pdf = PDF::loadView('itineraries.showitin', $data);
+  
+         //$pdf = PDF::setOptions(['defaultFont' => 'dejavu serif'])->loadView('itineraries.showitin', $data);
+         //return $pdf->stream('filename.pdf');
+    // //     // download PDF file with download method
+    // //     //return $pdf->download('pdf_file.pdf');
+      // }
 
     public function search(Request $request){
         // Lietotāja ierakstītā frāze tiek iegūta no formas input lauka,

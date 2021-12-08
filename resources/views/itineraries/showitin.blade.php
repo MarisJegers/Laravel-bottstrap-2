@@ -11,6 +11,9 @@
             <h4>Aktuālā ceļazīme Nr: {{$data->ti_nr}}</h4>
             <h4>Transporta līdzekļa vadītājs: {{ $data->user->name }}</h4>
             <h4>Transporta līdzekļa numurs: {{ $data->car->reg_nr }}</h4>
+            <div class="d-flex justify-content-end mb-4">
+                    <a class="btn btn-primary" href="{{ URL::to('#') }}">Export to PDF</a>
+                </div>
         </div>
         <div class="card-body">
           <table class="table">
@@ -92,6 +95,7 @@
                       @endforeach
               </tbody>
             </table>
+                
           </div>
       </div>
     </div>

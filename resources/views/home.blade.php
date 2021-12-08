@@ -27,6 +27,7 @@
                         <a href="{{ route('itineraries.create') }}">Pievienot ceļazīmi un braucienus</a> <br>
                         <a href="{{ route('journeys.index') }}">Visi braucieni</a> <br>
                         <a href="{{ url('/register') }}">Pievienot lietotāju</a> <br>
+                        <a href="{{ route('employees.index') }}">Visi darbinieki</a> <br>
                     @endif
                     
                 </div>

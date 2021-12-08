@@ -1,13 +1,14 @@
 <?php
 
+use App\Models\Travelitinerary;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\CostcenterController;
 use App\Http\Controllers\JourneyController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CostcenterController;
 use App\Http\Controllers\TravelitineraryController;
-use App\Models\Travelitinerary;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,13 @@ Route::get('/underconstruction', function () {
 
 // autentifikācijas routi
 Auth::routes();
+
+//useru saraksts, pdf eksporta tests
+Route::get('/employees/index', [EmployeeController::class, 'showEmployees'])->name('employees.index');
+Route::get('/employee/pdf', [EmployeeController::class, 'createPDF']);
+Route::get('/employee/edit/{id}', [EmployeeController::class, 'editemployee']);
+Route::post('/employee/update/{id}', [EmployeeController::class, 'updateemployee']);
+Route::get('/employee/delete/{id}', [EmployeeController::class, 'deleteemployee']);
 
 // sākuma lapa
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -68,6 +76,7 @@ Route::get('/itinerary/delete/{id}', [TravelitineraryController::class, 'deletei
 Route::get('/itinerary/show/{id}', [TravelitineraryController::class, 'show'])->name('itineraries.show');
 Route::get('/itineraries/search/', [TravelitineraryController::class, 'search'])->name('itineraries.search');
 Route::get('/itinerary/showitin/{id}', [TravelitineraryController::class, 'showitin'])->name('itineraries.showitin');
+//Route::get('/itinerary/pdf/{id}', [TravelitineraryController::class, 'createPDF']);
 
 //routi braucieniem
 Route::get('journeys/index', [JourneyController::class, 'alljourneys'])->name('journeys.index');
