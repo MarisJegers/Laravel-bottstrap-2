@@ -24,6 +24,8 @@
     <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+     @livewireStyles
+    @powerGridStyles
 </head>
 <body>
   
@@ -116,10 +118,13 @@
             </div>
         </nav>
 
-        <main class="container-fluid p-4 my-1 border">
+        
+        <main class="container-fluid border border-secondary">
             @yield('content')
         </main>
     </div>
       
+      @livewireScripts
+    @powerGridScripts
 </body>
 </html>

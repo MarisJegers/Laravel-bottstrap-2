@@ -82,3 +82,5 @@ Route::get('/itinerary/showitin/{id}', [TravelitineraryController::class, 'showi
 Route::get('journeys/index', [JourneyController::class, 'alljourneys'])->name('journeys.index');
 Route::post('journeys/add', [JourneyController::class, 'addjourneys'])->name('store.journey');
 Route::get('/journey/delete/{id}', [JourneyController::class, 'deletejourney']);
+
+Route::view('/powergrid', 'powergrid-demo');
