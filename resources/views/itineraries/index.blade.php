@@ -1,14 +1,13 @@
 @extends('layouts.app')
- 
+ @section('title', 'Visas CZ')
 @section('content')
        
     
-<div class="container">
+<div class="container-fluid">
         <div class="row">
-          <!-- Ieraksta pievienošanas poga -->
-          <div align="right">
-                <a class="btn btn-outline-dark btn-sm" href="{{ route('itineraries.create') }}"> Pievienot ierakstu</a>
-          </div>
+          <br>
+        </div>
+        <div class="row">
             
           <!-- ieraksta labošanas gadījumā, izleks paziņojums, ka tas veiksmīgi izdarīts -->
           @if(session('success'))
@@ -18,15 +17,22 @@
             </div>
           @endif
                 
-                  
-                  <h4>Ceļazīmju tabula</h4> 
-                    
-                  <!-- meklēšana -->
-                    <form action="{{ route('itineraries.search') }}" method="GET">
-                      <input type="text" name="search" required/>
-                      <button type="submit" class="btn btn-outline-dark btn-sm">Meklēt</button>
-                    </form>
+          <!-- meklēšana -->
+          <div class="col-sm-3">
+            <form action="{{ route('itineraries.search') }}" method="GET">
+              <input type="text" name="search" required/>
+              <button type="submit" class="btn btn-outline-dark btn-sm">Meklēt</button>
+            </form>
+             
+          </div>
                     <!-- end meklēšana-->
+          <div class="col-sm-7">
+            <h4 style="text-align:center;">Ceļazīmju tabula</h4>
+          </div>
+                    <!-- Ieraksta pievienošanas poga -->
+          <div class="col-sm-2">
+                <a class="btn btn-outline-dark btn-sm" href="{{ route('itineraries.create') }}"> Pievienot ierakstu</a>
+          </div>
                     
         </div> <!-- pirmās rindas beigas-->         
                     
@@ -75,8 +81,8 @@
                     <!-- Action pogas labajā malējā kolonā -->
                     <td> 
                     
-                    <a href="{{url('/itinerary/edit/'.$value->id)}}" class="btn btn-secondary btn-sm">Labot</a>
-                    <a href="{{url('/itinerary/delete/'.$value->id)}}" onclick="return confirm('Vai tiešām dzēst?')" class="btn btn-secondary btn-sm">Dzēst</a>
+                    <a href="{{url('/itinerary/edit/'.$value->id)}}" {{--class="btn btn-secondary btn-sm"--}}><img src="{{url('/image/edit-25px.png')}}" alt="Labot"></a>
+                    <a href="{{url('/itinerary/delete/'.$value->id)}}" onclick="return confirm('Vai tiešām dzēst?')" {{--class="btn btn-secondary btn-sm"--}}><img src="{{url('/image/delete-25px.png')}}" alt="Dzēst"></a>
                     <a href="{{url('/itinerary/showitin/'.$value->id)}}" class="btn btn-secondary btn-sm">Skatīt</a>
                     </td> 
                 </tr> 

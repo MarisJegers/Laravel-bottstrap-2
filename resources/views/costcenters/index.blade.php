@@ -16,7 +16,7 @@
                 @endif
                   <!-- kods izmaksu centru tabulas skatam lapas kreisajā pusē -->
                   <div class="card-header"> <h4>Izmaksu centru tabula</h4> 
-                  
+                  {{--<img src="{{url('/image/delete-25px.png')}}" alt="Dzēst">--}}
                   <!-- meklēšana -->
                     <form action="{{ route('costcenter.search') }}" method="GET">
                       <input type="text" name="search" required/>
@@ -50,8 +50,9 @@
                               <!-- Action pogas labajā malējā kolonā -->
                               <td> 
                               @can('isAdmin')
-                              <a href="{{url('/costcenter/edit/'.$value->id)}}" class="btn btn-secondary btn-sm">Labot</a>
-                              <a href="{{url('/costcenter/delete/'.$value->id)}}" onclick="return confirm('Vai tiešām dzēst?')" class="btn btn-secondary btn-sm">Dzēst</a>
+                              <a href="{{url('/costcenter/edit/'.$value->id)}}" {{--class="btn btn-secondary btn-sm"--}}><img src="{{url('/image/edit-25px.png')}}" alt="Labot"></a>
+                              <a href="{{url('/costcenter/delete/'.$value->id)}}" onclick="return confirm('Vai tiešām dzēst?')" {{--class="btn btn-secondary btn-sm"--}} ><img src="{{url('/image/delete-25px.png')}}" alt="Dzēst"></a>
+                              
                               @endcan
                               </td> 
                           </tr> 

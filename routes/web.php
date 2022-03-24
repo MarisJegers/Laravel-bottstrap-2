@@ -9,6 +9,8 @@ use App\Http\Controllers\JourneyController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CostcenterController;
 use App\Http\Controllers\TravelitineraryController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\SignatureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,3 +86,9 @@ Route::post('journeys/add', [JourneyController::class, 'addjourneys'])->name('st
 Route::get('/journey/delete/{id}', [JourneyController::class, 'deletejourney']);
 
 Route::view('/powergrid', 'powergrid-demo');
+//Route::view('/companies', 'index');
+Route::get('companies/index', [CompanyController::class, 'index'])->name('companies.index');
+
+//routi testa signature pad
+Route::get('signatures/signature-pad', [SignatureController::class, 'index'])->name('signatures.index');
+Route::post('signatures/signature-pad', [SignatureController::class, 'store'])->name('signature_pad.store');

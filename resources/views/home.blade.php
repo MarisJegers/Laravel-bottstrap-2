@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Ceļazīmes')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -19,7 +19,7 @@
                     <p>Šodien ir: {!! \Carbon\Carbon::now()->format('d.m.Y') !!}</p> 
                     <h5>Saites:</h5>
                     @if (Auth::check())
-                        <a href="{{ route('posts.index') }}">Uzziņas. Kā tas viss strādā.</a> <br> 
+                        <a href="{{ route('posts.index') }}"><button type="button" class="btn btn-secondary btn-lg btn-block">Uzziņas. Kā tas viss strādā</button></a> <br> 
                         <a href="{{ route('costcenters.index') }}">Izmaksu centri</a> <br>
                         <a href="{{ route('cars.index') }}">Transports</a> <br>
                         <a href="{{ url('/underconstruction') }}">Objektu kodi</a> <br>
@@ -28,6 +28,10 @@
                         <a href="{{ route('journeys.index') }}">Visi braucieni</a> <br>
                         <a href="{{ url('/register') }}">Pievienot lietotāju</a> <br>
                         <a href="{{ route('employees.index') }}">Visi darbinieki</a> <br>
+                        <a href="{{ route('companies.index') }}">Visi uzņēmumi</a> <br>
+                        <a href="{{ route('signatures.index') }}">
+                            <button type="button" class="btn btn-secondary btn-lg btn-block">Signature</button>
+                        </a>
                     @endif
                     
                 </div>
