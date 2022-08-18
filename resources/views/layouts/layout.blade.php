@@ -21,6 +21,7 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" >
+    <link href="{{ URL::asset('css/stylesheet.css') }}" rel="stylesheet" type="text/css" >
     <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
@@ -30,7 +31,7 @@
 
 <body>
   
-<div class="container">
+<div class="main">
     @yield('content')
 </div>
    

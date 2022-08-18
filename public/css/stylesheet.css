@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+img {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
+}
+
+/* Add a hover effect (blue shadow) */
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+h2{
+  color: white;
+}
+
+.aaaa{
+  height: 1000px;
+  width: 100%;
+  background-image: url('/image/abst1.jpg');
+  border-color: darkred;
+  background-size: cover;
+  /*opacity: 0.5;*/
+}
+
+.pcolor{
+  color: black;
+  /*background: black;*/
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
+  line-height: 500px;
+}
+
+video {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.video-wrapper {
+  border: 1px solid #000;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.headerx{
+  position: relative;
+  color: white;
+  text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+}

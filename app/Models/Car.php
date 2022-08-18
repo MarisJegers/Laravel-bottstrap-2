@@ -19,6 +19,8 @@ class Car extends Model
         'purchase_date',
         'cc_number_id',
         'description',
+        'imagename',
+        'imagepath'
 
     ];
     /* šis auto pieder vienam izmaksu centram */

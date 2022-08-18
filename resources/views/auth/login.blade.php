@@ -1,6 +1,17 @@
 @extends('layouts.layout')
 
 @section('content')
+
+<div class="video-wrapper">
+  <video playsinline autoplay muted loop poster="cake.jpg">
+    <!--<source src="https://cdn.videvo.net/videvo_files/video/free/2019-07/small_watermarked/Raw_Vegan_Blueberry_Cake_Cut_Birthday_Cooking_preview.webm" type="video/webm"> -->
+    <source src="image/ocean12.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  
+
+
 <div class="d-flex align-items-center">
     <div class="col"> <br> </div> <!-- sviestains veids, kā login lapu padarīt nedaudz glītāku-->
 </div>
@@ -14,36 +25,47 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-pasta adrese') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <div class="form-floating mb-3">
+                                <input 
+                                id="email" 
+                                type="email" 
+                                class="form-control @error('email') is-invalid @enderror" 
+                                name="email" 
+                                value="{{ old('email') }}" 
+                                required 
+                                
+                                autofocus
+                                placeholder="name@example.com">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <label for="floatingInput">E-pasta adrese</label>
                             </div>
-                        </div>
+                        
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Parole') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <div class="form-floating mb-3">
+                                <input 
+                                id="password" 
+                                type="password" 
+                                class="form-control @error('password') is-invalid @enderror" 
+                                name="password" 
+                                required 
+                                
+                                placeholder="Password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            <label for="floatingInput">Parole</label>
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -55,7 +77,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Pieteikties') }}
                                 </button>
@@ -72,5 +94,5 @@
             </div>
         </div>
     </div>
-
+</div>
 @endsection

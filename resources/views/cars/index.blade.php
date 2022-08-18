@@ -46,6 +46,7 @@
                             <th scope="col">Informācija</th>
                             <th scope="col">Pievienots</th>
                             <th scope="col">Darbības</th>
+                            <th scope="col">Bilde</th>
                           </tr>
                         </thead>
                         <!-- te cikls ielasīs datus no DB tabulas -->
@@ -64,12 +65,23 @@
                               <td>{{ $value->costcenter->cc_number }}</td>
                               <td>{{ $value->description }}</td>
                               <td>{{ $value->created_at->toDateString() }}</td>
+                              
                               <!-- Action pogas labajā malējā kolonā -->
                               <td> 
                               @can('isAdmin')
-                              <a href="{{url('/car/edit/'.$value->id)}}" class="btn btn-secondary btn-sm">Labot</a>
-                              <a href="{{url('/car/delete/'.$value->id)}}" onclick="return confirm('Vai tiešām dzēst?')" class="btn btn-secondary btn-sm">Dzēst</a>
+                              <a href="{{url('/car/edit/'.$value->id)}}" {{--class="btn btn-secondary btn-sm"--}} data-toggle="tooltip" data-placement="top" title="Labot"><img src="{{url('/image/edit-25px.png')}}" alt="Labot"></a>
+                              <a href="{{url('/car/delete/'.$value->id)}}" onclick="return confirm('Vai tiešām dzēst?')" {{--class="btn btn-secondary btn-sm"--}} data-toggle="tooltip" data-placement="top" title="Dzēst" ><img src="{{url('/image/delete-25px.png')}}" alt="Dzēst"></a>
                               @endcan
+                              </td> 
+                              <td>
+                              {{--@push('css')--}}
+                                  {{--<link rel="stylesheet" href="/public/css/">--}}
+
+                              <a target="_blank" href="{{ asset('image/' . $value->imagepath) }}" width="30">
+                              <img src="{{ asset('image/' . $value->imagepath) }}" width="100">
+                              </a>
+                              {{--<td><img src="{{ asset('image/' . $value->imagepath) }}"></td>--}}
+                               {{--@endpush--}}
                               </td> 
                           </tr> 
                                 @endforeach
@@ -82,4 +94,10 @@
           </div> 
       </div>
     </div>
+
+      <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
 @endsection

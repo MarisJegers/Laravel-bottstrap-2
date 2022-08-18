@@ -30,7 +30,13 @@ class CarController extends Controller
 
     public function addcar(Request $request){
         $this->authorize('isAdmin');
-        
+       
+        //dd($request->all());
+       //if($request->hasFile('image')){
+            //$image = $request->file('image');
+           // $imagename = $image->getClientOriginalName();
+           // $imagepath = $request->file('image')->store('public/image');
+        //}
         // validācijas kļūda parādās costcenters/index.blade.php skatā
         // uniqe:costcenters nozīmē unikāls ieraksts costcenters tabulā
         $request->validate([
@@ -42,6 +48,7 @@ class CarController extends Controller
             'fuel_cons_factory' => ['nullable','numeric'],
             'purchase_date' => ['nullable', 'date'],
             'descrption'=> ['nullable','text'],
+             //'image' => ['required', 'mimes:jpg'],
         ],
     [
         'reg_nr.required' => 'Laukam jābūt aizpildītam', // šīs ir error message
@@ -49,11 +56,16 @@ class CarController extends Controller
         'make.required' => 'Laukam jābūt aizpildītam', // šīs ir error message
         'make.max' => 'Maksimālais ievadāmo zīmju skaits ir 20',
         'fuel_type.required' => 'Laukam jābūt aizpildītam', // šīs ir error message
+        //'image.required' => 'Pievieno attēla failu',
     ]);
     
+    $newImageName = time().'-'.$request->name.'.'.$request->photo->extension();
+    $request->photo->move(public_path('image'), $newImageName);
+    //dd($test);
     //Costcenter::create($request->all());
     // eloquent variants datu pievienošanai
-    Car::insert([
+    //Car::insert([
+    $product = Car::create([
         'reg_nr'=>$request->reg_nr,   //pirmais cc_number ir index.blade formas input lauks, request ir mainīgais kura tas tiek saglabāts un padots uz db`zes tabulu
         'make'=>$request->make,
         'model'=>$request->model,
@@ -63,8 +75,21 @@ class CarController extends Controller
         'purchase_date'=>$request->purchase_date,
         'cc_number_id'=>$request->cc_number_id,
         'description'=>$request->description,
-        'created_at'=>Carbon::now()
+        'created_at'=>Carbon::now(),
+        'imagename' => $newImageName,
+        'imagepath' => $newImageName,
     ]);
+            // if($request->hasFile('image'))
+            // {
+            //     $uploaded_photo = $request->file('image');
+            //     $extension = $uploaded_photo->getClientOriginalExtension();
+            //     $imagename = md5(time()). '.' .$extension;
+            //     $imagepath =  public_path('image');
+            //     $uploaded_photo->move($imagepath, $imagename);
+            // }
+
+            // $product->image = $imagename;
+            // $product->save();//no https://www.tutsmake.com/laravel-8-image-upload-tutorial/
 
         return redirect()->back()->with('success', 'Transporta līdzeklis pievienots');
 

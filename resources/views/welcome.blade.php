@@ -85,6 +85,7 @@
                     @else
                         <a href="{{ url('/login') }}">Pieteikties</a>
                         {{-- <a href="{{ url('/register') }}">Register</a> --}}
+                        <a href="{{ route('tests.create') }}">Tests</a>
                     @endif
                 </div>
             @endif

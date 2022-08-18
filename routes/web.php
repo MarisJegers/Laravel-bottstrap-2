@@ -11,6 +11,7 @@ use App\Http\Controllers\CostcenterController;
 use App\Http\Controllers\TravelitineraryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SignatureController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,3 +93,9 @@ Route::get('companies/index', [CompanyController::class, 'index'])->name('compan
 //routi testa signature pad
 Route::get('signatures/signature-pad', [SignatureController::class, 'index'])->name('signatures.index');
 Route::post('signatures/signature-pad', [SignatureController::class, 'store'])->name('signature_pad.store');
+
+
+// routi testam
+Route::get('tests/index', [TestController::class, 'index'])->name('tests.index');
+Route::get('tests/create', [TestController::class, 'create'])->name('tests.create');
+Route::post('tests/add', [TestController::class, 'store'])->name('store.test');
