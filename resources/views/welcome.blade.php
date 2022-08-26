@@ -85,7 +85,7 @@
                     @else
                         <a href="{{ url('/login') }}">Pieteikties</a>
                         {{-- <a href="{{ url('/register') }}">Register</a> --}}
-                        <a href="{{ route('tests.create') }}">Tests</a>
+                        {{--<a href="{{ route('tests.create') }}">Tests</a>--}}
                     @endif
                 </div>
             @endif
@@ -99,6 +99,7 @@
                     <!--<a href="https://laravel.com/docs">Documentation</a>-->
                     <p style="color: black">Veidots ar Laravel v.8</p>
                     <p style="color: black">Novembris, 2021.</p>
+                    <a href="{{ route('tests.create') }}">Tests</a>
                 </div>
             </div>
         </div>

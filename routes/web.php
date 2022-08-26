@@ -12,6 +12,7 @@ use App\Http\Controllers\TravelitineraryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\MapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,3 +100,12 @@ Route::post('signatures/signature-pad', [SignatureController::class, 'store'])->
 Route::get('tests/index', [TestController::class, 'index'])->name('tests.index');
 Route::get('tests/create', [TestController::class, 'create'])->name('tests.create');
 Route::post('tests/add', [TestController::class, 'store'])->name('store.test');
+Route::get('/tests/edit/{id}', [TestController::class, 'edit']);
+Route::post('/tests/update/{id}', [TestController::class, 'update']);
+Route::get('/tests/delete/{id}', [TestController::class, 'delete']);
+
+//routs karte
+
+Route::get('maps/index', [MapController::class, 'index'])->name('maps.index');
+Route::get('maps/create', [MapController::class, 'create'])->name('maps.create');
+Route::post('maps/add', [MapController::class, 'store'])->name('store.maps');

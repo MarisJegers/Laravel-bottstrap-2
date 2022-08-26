@@ -1,0 +1,3 @@
+<strong>
+  {{ $address->maddress }}
+</strong>
