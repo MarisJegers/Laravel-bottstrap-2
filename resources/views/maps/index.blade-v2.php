@@ -1,4 +1,4 @@
-{{-- maps.index skats v.3 ar centralizētu testa layoutu un tailwind css--}}
+{{-- maps.index skats v.2 ar centralizētu testa layoutu un w3.css--}}
 
 @extends('layouts.test')
 

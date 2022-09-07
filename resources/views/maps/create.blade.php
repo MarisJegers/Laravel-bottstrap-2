@@ -1,4 +1,4 @@
-{{--maps/create.blade.php--}}
+{{--maps/create.blade.php v.2 ar centralizētu testa layout un tailwind.css--}}
 {{-- Alert message: https://www.w3schools.com/howto/howto_js_alert.asp --}}
 
 @extends('layouts.test')
@@ -12,11 +12,11 @@
 
 
 
-<div class="w3-card w3-light-grey w3-margin w3-padding-large">
-  <div class="w3-container">
-    <h2>Adreses pievienošana</h2>
-  </div>
-  <div class="w3-container">
+<!--kaut kas līdzīgs bootstrap card-->
+<div class="flex justify-center my-3">
+  <div class="block p-9 rounded-lg shadow-lg bg-white max-w-sm">
+    <h2 class="text-gray-900 text-xl leading-tight font-medium mb-2">Adreses pievienošana</h2>
+  <div class="container mx-auto">
     @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -34,87 +34,120 @@
     </div>
    @endif
     
-      <form class="w3-container" name="mapForm" onsubmit="return(validationFunc())" method="post" action="{{ route('store.maps') }}">
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" name="mapForm" onsubmit="return(validationFunc())" method="post" action="{{ route('store.maps') }}">
           @csrf
-          <div class="form-group">
-              <label for="mname">Vieta</label>
+          <div class="mb-4">
+              <label for="mname" class="block text-gray-700 text-sm font-bold mb-2">Vieta</label>
               <input type="text" 
-                    class="form-control required" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline required"
                     name="mname"
                     {{--value="{{$test->tname}}"--}} 
                     onkeyup="enableSubmit()"/>
           </div>
-          <div class="form-group">
-              <label for="maddress">Adrese</label>
+          <div class="mb-4">
+              <label for="maddress" class="block text-gray-700 text-sm font-bold mb-2">Adrese</label>
               <input type="text" 
-                    class="form-control required" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline required" 
                     name="maddress"
                     {{--value="{{$test->tplace}}"--}} 
                     onkeyup="enableSubmit()"/>
           </div>
-          <div class="form-group">
-              <label for="latitude">Lat.</label>
+          <div class="mb-4">
+              <label for="latitude" class="block text-gray-700 text-sm font-bold mb-2">Lat.</label>
               <input type="number" 
-                    class="form-control required" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline required" 
                     name="latitude"
                     step="any"
                     {{--value="{{$test->tage}}"--}} 
                     onkeyup="enableSubmit()"/>
           </div>
-          <div class="form-group">
-              <label for="longitude">Lon.</label>
+          <div class="mb-4">
+              <label for="longitude" class="block text-gray-700 text-sm font-bold mb-2">Lon.</label>
               <input type="number" 
-                    class="form-control required" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline required" 
                     name="longitude"
                     step="any"
                     {{--value="{{$test->tzip}}"--}} 
                     onkeyup="enableSubmit()"/>
           </div>
 
-          <button type="submit" class="btn btn-primary" disabled>Pievienot</button>
+          <button type="submit" class="w-1/2 hover:w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" disabled>Pievienot</button>
       </form>
   </div>
+</div>
 </div>
 
 <!-- tabula datu atgriešanai no db`zes-->
 
-<div class="w3-card w3-light-grey w3-margin w3-padding-large">
-  <div class="w3-container">
-    <h2>Adrešu saraksts</h2>
-  </div>
-  <div class="w3-container w3-mobile">
 
-     <table class="w3-table-all">
-        <thead>
-          <tr class="w3-light-grey">
-            <th scope="col">Nr</th>
-            <th scope="col">Vieta</th>
-            <th scope="col">Adrese</th>
-            <th scope="col">Garums</th>
-            <th scope="col">Platums</th>
-            <th scope="col">Datums</th>
-          </tr>
-        </thead>
-        <!-- te cikls ielasīs datus no BD tabulas -->
-        <tbody>
+<div class="grid grid-cols-6 gap-4">
+  <div class="col-start-3 col-span-2 rounded-md text-center bg-gray-900 font-semibold text-white p-2">Adrešu saraksts</div>
+  
+</div>
+    
+
+<!-- tailwind tabula start -->
+
+      <div class="min-h-screen py-5">
+        <div class='overflow-x-auto w-full'>
+          
+        <table class="mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden">
+          <thead class="bg-gray-900">
+            <tr class="text-white text-left">
+              <th scope="col" class="font-semibold text-sm uppercase px-6 py-4">
+                <strong> Nr </strong>
+              </th>
+              <th scope="col" class="font-semibold text-sm uppercase px-6 py-4">
+                <strong> Vieta </strong>
+              </th>
+              <th scope="col" class="font-semibold text-sm uppercase px-6 py-4">
+                <strong> Adrese </strong>
+              </th>
+              <th scope="col" class="font-semibold text-sm uppercase px-6 py-4">
+                <strong> Garums </strong>
+              </th>
+              <th scope="col" class="font-semibold text-sm uppercase px-6 py-4">
+                <strong> Platums </strong>
+              </th>
+              <th scope="col" class="font-semibold text-sm uppercase px-6 py-4">
+                <strong> Datums </strong>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
                 @php($i = 0)
                 @foreach ($data as $key => $value)
-          <tr>
-              <td>{{ ++$i }}</td>
-              <td>{{ $value->mname }}</td>
-              <td>{{ $value->maddress }}</td>
-              <td>{{ $value->latitude }}</td>
-              <td>{{ $value->longitude }}</td>
-              <td>{{ $value->created_at }}</td>
-          </tr> 
-                @endforeach
-        </tbody>
-      </table>
+            <tr class="bg-gray-100 border-b">
 
-          {{ $data->links() }} <!--šis, lai strādātu paginate -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                {{ ++$i }}
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                {{ $value->mname }}
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                {{ $value->maddress }}
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                {{ $value->latitude }}
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                {{ $value->longitude }}
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                {{ $value->created_at }}
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+         {{ $data->links() }} <!--šis, lai strādātu paginate -->
+      </div>
+    </div>
+ 
 
-  </div> <!-- end card body-->
-</div> <!-- end card uper-->
+
+<!-- tailwind tabula end-->
 
 <script type="text/javascript">
 
@@ -156,14 +189,14 @@ function enableSubmit(){
   btn.disabled = !isValid;
   }
 
-  function myNav() {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-      } else {
-        x.className = "topnav";
-      }
-    }
+  //function myNav() {
+    //  var x = document.getElementById("myTopnav");
+      //if (x.className === "topnav") {
+        //x.className += " responsive";
+      //} else {
+        //x.className = "topnav";
+      //}
+    //}
 
 </script>
 

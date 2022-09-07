@@ -82,11 +82,12 @@
                                     {{ __('Pieteikties') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Aizmirsi paroli?') }}
-                                    </a>
-                                @endif
+                                {{--@if (Route::has('password.request'))--}}
+                                    {{--<a class="btn btn-link" href="{{ route('password.request') }}"> </a>--}}
+                                        <a class="btn btn-link" href="{{ url('/register') }}">{{ __('Reģistrēties') }}</a>
+                                        
+                                    
+                                {{--@endif--}}
                             </div>
                         </div>
                     </form>

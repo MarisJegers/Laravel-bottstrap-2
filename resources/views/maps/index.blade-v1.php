@@ -1,3 +1,4 @@
+{{-- index blade fails bez centralizēta layouta fails --}}
 <!DOCTYPE html>
 <html lang="en">
     <head>

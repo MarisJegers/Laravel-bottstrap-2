@@ -1,131 +1,22 @@
-{{--maps/create.blade.php--}}
+{{--maps/create.blade.php v.2 ar centralizētu testa layout un w3.css--}}
 {{-- Alert message: https://www.w3schools.com/howto/howto_js_alert.asp --}}
 
-{{--@extends('layouts.test')--}}
+@extends('layouts.test')
 
-<!DOCTYPE html>
-<html lang="lv">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>TEST</title>
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
-  
-  <style>
-  .uper {
-    margin-top: 40px;
-  }
+@section('navbar')
+   @parent <!-- Includes parent sidebar -->
 
-  .card {
-    margin: 50px;
-  }
+@stop
 
-  /* The alert message box */
-  .alert {
-    padding: 20px;
-    background-color: #99ff99; /* light green */
-    color: #003300;
-    margin-bottom: 15px;
-  }
-
-  /* The close button */
-  .closebtn {
-    margin-left: 15px;
-    color: #003300;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  /* When moving the mouse over the close button */
-  .closebtn:hover {
-    color: black;
-  }
-
-  /* css navigācijas lentai maps.index, maps.create un layouts/test skatiem */
-  .topnav {
-    overflow: hidden;
-    background-color: #333;
-    
-  }
-
-  .topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .topnav a.active {
-    background-color: darkblue;
-    color: white;
-  }
-
-  .topnav .icon {
-    display: none;
-  }
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-/* END css topnav maps.index lapām */
-
-</style>
-
-
-</head>
-
-<body style="background-color:darkslategrey;">
-
-    <div class="topnav" id="myTopnav">
-          <a href="{{ url('/') }}" class="active">Sākums</a>
-          <a href="{{ route('maps.index') }}">Karte</a>
-          <a href="{{ route('maps.create') }}">Adreses</a>
-          <a href="{{ route('tests.index') }}">Forma</a>
-          <a href="javascript:void(0);" class="icon" onclick="myNav()">
-            <i class="fa fa-bars"></i>
-          </a>
-    </div>
-
-{{--@section('content')--}}
+@section('content')
 
 
 
-<div class="card uper">
-  <div class="card-header">
+<div class="w3-card w3-light-grey w3-margin w3-padding-large">
+  <div class="w3-container">
     <h2>Adreses pievienošana</h2>
   </div>
-  <div class="card-body">
+  <div class="w3-container">
     @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -143,7 +34,7 @@
     </div>
    @endif
     
-      <form name="mapForm" onsubmit="return(validationFunc())" method="post" action="{{ route('store.maps') }}">
+      <form class="w3-container" name="mapForm" onsubmit="return(validationFunc())" method="post" action="{{ route('store.maps') }}">
           @csrf
           <div class="form-group">
               <label for="mname">Vieta</label>
@@ -187,15 +78,15 @@
 
 <!-- tabula datu atgriešanai no db`zes-->
 
-<div class="card uper">
-  <div class="card-header">
+<div class="w3-card w3-light-grey w3-margin w3-padding-large">
+  <div class="w3-container">
     <h2>Adrešu saraksts</h2>
   </div>
-  <div class="card-body">
+  <div class="w3-container w3-mobile">
 
-     <table class="table">
+     <table class="w3-table-all">
         <thead>
-          <tr>
+          <tr class="w3-light-grey">
             <th scope="col">Nr</th>
             <th scope="col">Vieta</th>
             <th scope="col">Adrese</th>
@@ -276,4 +167,4 @@ function enableSubmit(){
 
 </script>
 
-{{--@endsection--}}
+@endsection
