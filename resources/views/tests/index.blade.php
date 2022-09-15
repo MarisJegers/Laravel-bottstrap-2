@@ -105,8 +105,25 @@
 
 <!-- tailwind forma stop -->
 
-<!-- tailwind tabula start-->
 
+
+<!-- pogas eksportam uz xlsx -->
+<div class="flex flex-row mx-auto max-w-screen-sm p-6 bg-gray-900 text-white gap-4 justify-center rounded-lg">
+  <!-- ... -->
+  <div class="flex-center text-center bg-gray-700 p-3 rounded-lg hover:bg-gray-600">
+   <a class="no-underline hover:underline" href="{{route('tests.export')}}" data-bs-toggle="tooltip" title="Datu eksports .xlsx formātā">Eksportēt</a>
+  </div>
+  <div class="flex-center text-center bg-gray-700 p-3 rounded-lg hover:bg-gray-600">
+   <a class="no-underline hover:underline" href="{{route('tests.storeExcel')}}" data-bs-toggle="tooltip" title="Saglabāt uz servera">Store</a>
+  </div>
+  <div class="flex-center text-center bg-gray-700 p-3 rounded-lg hover:bg-gray-600">
+   <a class="no-underline hover:underline" href="{{route('tests.mail')}}"data-bs-toggle="tooltip" title="Sūtīt eksporta failu e-pastā">Sūtīt</a>
+  </div>
+</div>
+<!-- END pogas eksportam-->
+
+
+<!-- tailwind tabula start-->
 <div class="min-h-screen py-5">
         <div class='overflow-x-auto w-full'>
         <table class="mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden">
@@ -182,5 +199,13 @@
 <!-- tailwind tabula end -->>
 
 
-<script type="text/javascript"></script>
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
+</script>
 @endsection

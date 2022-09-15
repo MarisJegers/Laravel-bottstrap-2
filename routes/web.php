@@ -103,9 +103,18 @@ Route::post('tests/add', [TestController::class, 'store'])->name('store.test');
 Route::get('/tests/edit/{id}', [TestController::class, 'edit']);
 Route::post('/tests/update/{id}', [TestController::class, 'update']);
 Route::get('/tests/delete/{id}', [TestController::class, 'delete']);
+Route::get('export/', [TestController::class, 'export'])->name('tests.export');
+Route::get('store/', [TestController::class, 'storeExcel'])->name('tests.storeExcel');
+//Route::get('send-email', [TestController::class, 'sendEmail'])->name('mail-template');
+Route::get('/mail', [TestController::class, 'getemail'])->name('tests.mail');
+//Route::post('tests/mailat', [TestController::class, 'sendAttach'])->name('mail-template');
+//Route::post('/mail',[TestController::class, 'sendAttach']);
+Route::post('/mail',[TestController::class, 'sendAttachm']);
+Route::get('/contact', [TestController::class, 'getemail'])->name('tests.mail');
+Route::post('/contact', [TestController::class, 'contactPost']);
+
 
 //routs karte
-
 Route::get('maps/index', [MapController::class, 'index'])->name('maps.index');
 Route::get('maps/create', [MapController::class, 'create'])->name('maps.create');
 Route::post('maps/add', [MapController::class, 'store'])->name('store.maps');
