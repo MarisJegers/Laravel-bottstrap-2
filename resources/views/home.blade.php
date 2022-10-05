@@ -69,6 +69,7 @@
                         <a class="saite poga" href="{{ route('companies.index') }}">Visi uzņēmumi</a>
                         <a class="saite poga" href="{{ route('signatures.index') }}">Signature</a>
                         <a class="saite poga" href="{{ route('maps.index') }}">Testa UZDEVUMI</a>
+                        <a class="saite poga" href="{{ route('products') }}">Bode</a>
 
 <!--end izmēģinājums linkiem-->
 

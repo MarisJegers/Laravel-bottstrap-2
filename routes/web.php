@@ -13,7 +13,8 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\MapController;
-
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -118,3 +119,15 @@ Route::post('/contact', [TestController::class, 'contactPost']);
 Route::get('maps/index', [MapController::class, 'index'])->name('maps.index');
 Route::get('maps/create', [MapController::class, 'create'])->name('maps.create');
 Route::post('maps/add', [MapController::class, 'store'])->name('store.maps');
+
+//produkti
+Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::post('/products', [ProductController::class, 'addItem'])->name('products.add');
+
+//pirkumu grozs
+Route::get('/cart', [CartController::class, 'index'])->name('cart')->middleware('auth');
+Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove')->middleware('auth');
+Route::post('/cart', [CartController::class, 'purchase'])->name('cart.purchase')->middleware('auth');
+Route::get('/pirkt', [CartController::class, 'pirkt'])->name('pirkt')->middleware('auth');
+Route::get('/payment/{string}/{price}', [CartController::class, 'charge'])->name('goToPayment');
+Route::post('payment/process-payment/{string}/{price}', [CartController::class, 'processPayment'])->name('processPayment');
